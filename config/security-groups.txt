@@ -1,0 +1,32 @@
+Security Group Rules
+
+1) Load Balancer Security Group (ALB)
+Inbound:
+- HTTP 80 from 0.0.0.0/0
+
+Outbound:
+- HTTP 80 to Application tier (targets)
+
+2) Application Tier Security Group (App)
+Inbound:
+- HTTP 80 from ALB Security Group only
+- SSH 22 from Bastion Security Group only
+
+Outbound:
+- Default outbound allowed (used for updates via NAT and DB connectivity)
+
+3) Data Tier Security Group (Data)
+Inbound:
+- DB Port 3306 from App Security Group only
+- SSH 22 from Bastion Security Group only
+
+Outbound:
+- Default outbound allowed
+
+4) Bastion Security Group
+Inbound:
+- SSH 22 from my public IP only (recommended)
+
+Outbound:
+- SSH 22 to App tier instances
+- SSH 22 to Data tier instance

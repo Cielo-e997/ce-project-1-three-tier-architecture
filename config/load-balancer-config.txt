@@ -1,0 +1,21 @@
+Load Balancer Configuration
+
+Type: Application Load Balancer
+Scheme: Internet-facing
+Listener:
+- HTTP 80
+
+Network:
+- Deployed in two public subnets across two Availability Zones
+- VPC: ce-project1-vpc
+
+Target Group:
+- Name: app-tg
+- Target type: Instances
+- Protocol: HTTP
+- Port: 80
+- Health check path: /health
+
+Behavior:
+- Incoming requests to the ALB DNS are distributed across 3 application instances
+- Unhealthy instances are removed automatically based on health checks

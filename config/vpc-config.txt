@@ -1,0 +1,25 @@
+VPC Configuration
+
+Region: eu-central-1
+VPC CIDR Block: 10.0.0.0/16
+
+Availability Zones Used:
+- eu-central-1a
+- eu-central-1b
+
+Subnets:
+
+Public Subnets:
+- 10.0.1.0/24 (eu-central-1a)
+- 10.0.2.0/24 (eu-central-1b)
+
+Private Application Subnets:
+- 10.0.3.0/24 (eu-central-1a)
+- 10.0.4.0/24 (eu-central-1b)
+
+Private Data Subnets:
+- 10.0.5.0/24 (eu-central-1a)
+- 10.0.6.0/24 (eu-central-1b)
+
+Internet Gateway: Attached to VPC
+NAT Gateway: Deployed in a public subnet for private subnet outbound access
